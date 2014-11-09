@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @district_superintendent.name %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @district_superintendent.district_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @district_superintendent.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_district_superintendent_path(@district_superintendent) %> |
+<%= link_to 'Back', district_superintendents_path %>

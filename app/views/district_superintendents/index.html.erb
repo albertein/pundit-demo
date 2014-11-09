@@ -1,0 +1,29 @@
+<h1>Listing district_superintendents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>District</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @district_superintendents.each do |district_superintendent| %>
+      <tr>
+        <td><%= district_superintendent.name %></td>
+        <td><%= district_superintendent.district_id %></td>
+        <td><%= district_superintendent.user_id %></td>
+        <td><%= link_to 'Show', district_superintendent %></td>
+        <td><%= link_to 'Edit', edit_district_superintendent_path(district_superintendent) %></td>
+        <td><%= link_to 'Destroy', district_superintendent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New District superintendent', new_district_superintendent_path %>

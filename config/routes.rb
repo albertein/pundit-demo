@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
+  resources :district_superintendents
+
+  resources :class_enrollments
+
+  resources :school_classes
+
+  resources :teachers
+
+  resources :schools
+
+  resources :districts
+
+  resources :parents
+
+  resources :students
+
   devise_for :users
+
+  resources :students, :teachers, :school, :school_class, :district, :parent,
+    :district_superintendent
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
