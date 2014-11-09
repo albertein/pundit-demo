@@ -1,7 +1,42 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+def set_user!(obj)
+  password = '12345678' # Choosen by a random dice roll, promise!
+  obj.user = User.create!(email: "#{obj.name.downcase}@example.com", password: password)
+end
+
+# We need a district first
+west_district = District.create!(name: 'West district')
+
+
+# Lets set up everything for North high, go wolves!
+
+catelyn = Parent.create!(name: 'Catelyn')
+set_user!(catelyn)
+
+john = Student.create!(name: 'John', parent: catelyn)
+set_user!(john)
+
+sansa = Student.create!(name: 'Sansa', parent: catelyn)
+set_user!(sansa)
+
+
+north_high = School.create!(name: 'North high', district: west_district)
+
+ludwin = Teacher.create!(name: 'Ludwin', school: north_high)
+set_user!(ludwin)
+
+# Now it's time for South high, go lions!
+
+robert = Parent.create!(name: 'Robert')
+set_user!(robert)
+
+tommen = Student.create!(name: 'Thommen', parent: robert) # Yeah, right!
+set_user!(tommen)
+
+south_high = School.create!(name: 'South high', district: west_district)
+
+pycelle = Teacher.create!(name: 'Pycelle', school: south_high)
+set_user!(pycelle)
+
+tywin = DistrictSuperintendent.create!(name: 'Tywin', district: west_district)
+set_user!(tywin)
+
