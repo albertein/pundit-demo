@@ -1,0 +1,18 @@
+<p>Welcome!</p>
+<p>If you ran the db seeds you should have students, parents, teachers and super intendents!</p>
+<p>Some rules to live by:<p>
+<ul>
+  <li>Students can see themselves
+  <li>Parents can only see their childs!
+  <li>Teachers can see only the students they teach and themselves
+  <li>Super intendents can see all their district teachers, and can see all the students, they should only see their district students but silly me!, i forgot to add the student -> school relationship. So bear with me and imagine there is such relationship and we have a students method on district that looks somewhat like Student.joins(:school).where({school: schools})
+</ul>
+
+<p>Some users to try!:<p>
+<ul>
+  <li>thommen@example.com is a student, he should only see himself
+  <li>catelyn@example.com is a caring mother, se can see both her childs
+  <li>pycelle@example.com is an old teacher, he should look for retirement!, he can see all the kids on south high.
+  <li>ludwin@example.com is a wise teacher, he can see all the kids on north high
+  <li>tywin@example.com is the district super intendent, he can see all stundets and teachers on both north and south high
+</ul>

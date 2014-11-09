@@ -8,6 +8,16 @@
 </head>
 <body>
 
+
+<% if current_user.nil? %>
+  <%= link_to 'Login', new_user_session_path %>
+<% else %>
+    <%= link_to 'Signout', destroy_user_session_path, method: :DELETE %>
+    <% app_sections.each do |section| %>
+        <%= link_to section[:name], section[:path] %>
+    <% end %>
+<% end %>
+
 <%= yield %>
 
 </body>
