@@ -4,7 +4,7 @@ class Authenticated::StudentsController < Authenticated::AuthenticatedController
   respond_to :html
 
   def index
-    @students = Student.all
+    @students = policy_scope(Student)
     respond_with(@students)
   end
 
@@ -14,6 +14,7 @@ class Authenticated::StudentsController < Authenticated::AuthenticatedController
 
   def new
     @student = Student.new
+    authorize @student
     respond_with(@student)
   end
 
@@ -38,7 +39,10 @@ class Authenticated::StudentsController < Authenticated::AuthenticatedController
 
   private
     def set_student
-      @student = Student.find(params[:id])
+      # We use find_by_id instead of find to avoid raising an ActiveRecord::RecordNotFound, instead
+      # we call not_found defined on our application_controller to render our generic 404 form.
+      @student = policy_scope(Student).find_by_id(params[:id]) or not_found
+      authorize @student
     end
 
     def student_params

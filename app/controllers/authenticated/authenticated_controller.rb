@@ -1,3 +1,7 @@
 class Authenticated::AuthenticatedController < ApplicationController
-    before_action :authenticate_user!
+  include Pundit
+  before_action :authenticate_user!
+  after_action :verify_policy_scoped, :only => [:index, :show, :edit, :update, :destroy]
+  after_action :verify_authorized, :except => :index
+
 end
