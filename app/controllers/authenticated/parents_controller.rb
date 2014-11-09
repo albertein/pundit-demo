@@ -1,4 +1,4 @@
-class ParentsController < ApplicationController
+class Authenticated::ParentsController < Authenticated::AuthenticatedController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

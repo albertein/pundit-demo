@@ -1,4 +1,4 @@
-class ClassEnrollmentsController < ApplicationController
+class Authenticated::Authenticated::ClassEnrollmentsController < Authenticated::AuthenticatedController
   before_action :set_class_enrollment, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

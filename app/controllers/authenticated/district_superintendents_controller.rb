@@ -1,4 +1,4 @@
-class DistrictSuperintendentsController < ApplicationController
+class Authenticated::DistrictSuperintendentsController < Authenticated::AuthenticatedController
   before_action :set_district_superintendent, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
-  resources :district_superintendents
 
-  resources :class_enrollments
+  scope module: 'authenticated' do
+    resources :district_superintendents
 
-  resources :school_classes
+    resources :class_enrollments
 
-  resources :teachers
+    resources :school_classes
 
-  resources :schools
+    resources :teachers
 
-  resources :districts
+    resources :schools
 
-  resources :parents
+    resources :districts
 
-  resources :students
+    resources :parents
+
+    resources :students
+  end
 
   devise_for :users
 
-  resources :students, :teachers, :school, :school_class, :district, :parent,
-    :district_superintendent
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

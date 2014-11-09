@@ -1,4 +1,4 @@
-class TeachersController < ApplicationController
+class Authenticated::TeachersController < Authenticated::AuthenticatedController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

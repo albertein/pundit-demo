@@ -1,4 +1,4 @@
-class SchoolClassesController < ApplicationController
+class Authenticated::SchoolClassesController < Authenticated::AuthenticatedController
   before_action :set_school_class, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

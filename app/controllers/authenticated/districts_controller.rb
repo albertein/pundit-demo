@@ -1,4 +1,4 @@
-class DistrictsController < ApplicationController
+class Authenticated::DistrictsController < Authenticated::AuthenticatedController
   before_action :set_district, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
