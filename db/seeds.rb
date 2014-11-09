@@ -1,6 +1,7 @@
 def set_user!(obj)
   password = '12345678' # Choosen by a random dice roll, promise!
   obj.user = User.create!(email: "#{obj.name.downcase}@example.com", password: password)
+  obj.save!
 end
 
 # We need a district first
@@ -24,13 +25,16 @@ north_high = School.create!(name: 'North high', district: west_district)
 ludwin = Teacher.create!(name: 'Ludwin', school: north_high)
 set_user!(ludwin)
 
+s_class = SchoolClass.create!(name: 'Math 101', school: north_high, teacher: ludwin)
+s_class.class_enrollment << ClassEnrollment.new(student: sansa)
+
 # Now it's time for South high, go lions!
 
 robert = Parent.create!(name: 'Robert')
 set_user!(robert)
 
-tommen = Student.create!(name: 'Thommen', parent: robert) # Yeah, right!
-set_user!(tommen)
+thommen = Student.create!(name: 'Thommen', parent: robert) # Yeah, right!
+set_user!(thommen)
 
 south_high = School.create!(name: 'South high', district: west_district)
 
