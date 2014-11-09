@@ -4,7 +4,8 @@ class Authenticated::TeachersController < Authenticated::AuthenticatedController
   respond_to :html
 
   def index
-    @teachers = Teacher.all
+    @teachers = policy_scope(Teacher)
+    authorize @teachers
     respond_with(@teachers)
   end
 
@@ -14,6 +15,7 @@ class Authenticated::TeachersController < Authenticated::AuthenticatedController
 
   def new
     @teacher = Teacher.new
+    authorize @teacher
     respond_with(@teacher)
   end
 
@@ -38,7 +40,8 @@ class Authenticated::TeachersController < Authenticated::AuthenticatedController
 
   private
     def set_teacher
-      @teacher = Teacher.find(params[:id])
+      @teacher = policy_scope(Teacher).find_by_id(params[:id]) or not_found
+      authorize @teacher
     end
 
     def teacher_params

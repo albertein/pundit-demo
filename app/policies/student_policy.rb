@@ -1,6 +1,8 @@
 class StudentPolicy < ApplicationPolicy
 
   def index?
+    # We are not checking for the user since we're trusting on the scope_policy to filter
+    # on what you can actually see
     true
   end
 
